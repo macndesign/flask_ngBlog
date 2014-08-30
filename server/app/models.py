@@ -1,8 +1,12 @@
+# coding: utf-8
+from __future__ import unicode_literals, absolute_import
+
 from flask import g
 
 from wtforms.validators import Email
 
-from server import db, flask_bcrypt
+from .server import db, flask_bcrypt
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,6 +20,7 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.email
+
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -1,12 +1,12 @@
 import base64
 
-from flask import g, session
+from flask import g
 from flask.ext import restful
 
-from server import api, db, flask_bcrypt, auth
-from models import User, Post, SimpleToken
-from forms import UserCreateForm, SessionCreateForm, PostCreateForm
-from serializers import UserSerializer, PostSerializer, SimpleTokenSerializer
+from .server import api, db, flask_bcrypt, auth
+from .models import User, Post, SimpleToken
+from .forms import UserCreateForm, SessionCreateForm, PostCreateForm
+from .serializers import UserSerializer, PostSerializer, SimpleTokenSerializer
 
 
 @auth.verify_password
@@ -66,6 +66,7 @@ class PostView(restful.Resource):
 
 class Token(restful.Resource):
     def get(self):
+        # TODO: Get the user credentials automatically to token generation
         encoded = base64.b64encode('%s:%s' % ('johndoe@gmail.com', 'admin'))
         token = SimpleToken(encoded)
         return SimpleTokenSerializer(token).data

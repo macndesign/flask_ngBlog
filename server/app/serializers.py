@@ -1,4 +1,8 @@
+# coding: utf-8
+from __future__ import unicode_literals, absolute_import
+
 from marshmallow import Serializer, fields
+
 
 class UserSerializer(Serializer):
     class Meta:
