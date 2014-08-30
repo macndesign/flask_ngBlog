@@ -66,7 +66,6 @@ class PostView(restful.Resource):
 
 class Token(restful.Resource):
     def get(self):
-        print(g.user)
         encoded = base64.b64encode('%s:%s' % ('johndoe@gmail.com', 'admin'))
         token = SimpleToken(encoded)
         return SimpleTokenSerializer(token).data
