@@ -20,7 +20,7 @@ Começando com um exemplo básico de uso do módulo Requests com a API do github
 
     # Imprimindo o status code que vai retornar ok (código: 200)
     print(r.status_code)
-    # Imprimindo os cabeçálhos que vai retornar a string 'application/json; charset=utf-8'
+    # Imprimindo os Headers que vai retornar a string 'application/json; charset=utf-8'
     print(r.headers['content-type'])
 
 
@@ -102,10 +102,10 @@ dizer a quantidade de itens por página (per_page).
 
 
 
-Passando cabeçálhos customizados
+Passando Headers customizados
 --------------------------------
 
-Para passar cabeçálhos customizados em uma requisição basta passar um simples dicionário Python para o parametro headers.
+Para passar Headers customizados em uma requisição basta passar um simples dicionário Python para o parametro headers.
 Por exemplo se quiser passar um content-type na requisição do exemplo anterior.
 
 .. sourcecode:: python
@@ -114,13 +114,13 @@ Por exemplo se quiser passar um content-type na requisição do exemplo anterior
     url = 'https://api.github.com/some/endpoint'
     payload = {'some': 'data'}
     headers = {'content-type': 'application/json'}
-    
+
     r = requests.post(url, data=json.dumps(payload), headers=headers)
 
 
 
 Como a grande maioria das APIs exigem um access token para que possa ser obtido os dados, vamos adicionar esse access
-token ao cabeçálho.
+token ao header.
 
 .. sourcecode:: python
 
@@ -172,6 +172,3 @@ classe ``Response.raise_for_status()``
     requests.exceptions.HTTPError: 404 Client Error
 
     Response.raise_for_status() returns None for status_code 200
-
-
-
